@@ -1,6 +1,6 @@
 import pandas as pd
-from keras.models import Sequential
-from keras.layers import *
+from tensorflow.python.keras.models import Sequential
+from tensorflow.python.keras.layers import Dense
 
 training_data_df = pd.read_csv("sales_data_training_scaled.csv")
 
@@ -16,13 +16,7 @@ model.add(Dense(1, activation='linear'))
 model.compile(loss='mean_squared_error', optimizer='adam')
 
 # Train the model
-model.fit(
-    X,
-    Y,
-    epochs=50,
-    shuffle=True,
-    verbose=2
-)
+model.fit(X,Y, epochs=60, shuffle=True, verbose=2)
 
 # Load the separate test data set
 test_data_df = pd.read_csv("sales_data_test_scaled.csv")
@@ -37,7 +31,7 @@ print("The mean squared error (MSE) for the test data set is: {}".format(test_er
 X = pd.read_csv("proposed_new_product.csv").values
 
 # Make a prediction with the neural network
-prediction =
+prediction = model.predict(X)
 
 # Grab just the first element of the first prediction (since that's the only have one)
 prediction = prediction[0][0]

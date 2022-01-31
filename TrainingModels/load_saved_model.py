@@ -1,7 +1,8 @@
 import pandas as pd
-from keras.models import load_model
+from tensorflow.python.keras.models import Sequential, load_model
+from tensorflow.python.keras.layers import Dense
 
-model =
+model = load_model("trainedModel.h5")
 
 X = pd.read_csv("proposed_new_product.csv").values
 prediction = model.predict(X)
